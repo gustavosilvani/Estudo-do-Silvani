@@ -38,8 +38,8 @@ public class Pedido {
   }
 
   // Violação SRP: Múltiplas responsabilidades
-  double calcularTotal() {
-    let subtotal = itens.Aggregate((sum, item) => sum + item.preco, 0);
+  public double CalcularTotal() {
+    var subtotal = itens.Sum(item => item.Preco);
     
     // Lógica de desconto misturada
     if (cliente == 'VIP') {
@@ -75,15 +75,17 @@ public class Pedido {
 }
 
 // Uso
-const pedido = new Pedido'123', 'VIP', [
-  { nome: 'Produto 1', 100 preco },
-  { nome: 'Produto 2', 50 preco }
-];
+var pedido = new Pedido("123", "VIP", new List<Item>
+{
+  new Item { Nome = "Produto 1", Preco = 100 },
+  new Item { Nome = "Produto 2", Preco = 50 }
+});
 
-pedido.calcularTotal();
-pedido.salvar();
+pedido.CalcularTotal();
+pedido.Salvar();
 pedido.processarPagamento('cartao');
 pedido.enviarEmail();
+
 
 
 
@@ -110,7 +112,7 @@ public class Pedido {
 // Responsabilidade: Calcular totais
 public class CalculadoraPedido {
   double calcularSubtotalPedido pedido {
-    return pedido.itens.Aggregate((sum, item) => sum + item.preco, 0);
+    return pedido.Itens.Sum(item => item.Preco);
   }
 }
 
@@ -124,7 +126,7 @@ public class CalculadoraDesconto {
 // Responsabilidade: Persistir pedidos
 public class RepositorioPedido {
   salvarPedido pedido {
-    Console.WriteLine(`Salvando pedido ${pedido.id} no banco de dados...`);
+    Console.WriteLine(`Salvando pedido ${pedido.Id} no banco de dados...`);
   }
 
   Pedido buscarstring id? {
@@ -139,6 +141,7 @@ public class ServicoNotificacao {
     Console.WriteLine`Enviando email para ${destino}: ${assunto}`;
   }
 }
+
 
 
 
@@ -207,6 +210,7 @@ public class ProcessadorPix : ProcessadorPagamento {
 
 
 
+
 ```
 
 ### Passo 3: Aplicar LSP (Liskov Substitution)
@@ -225,17 +229,17 @@ public class RepositorioPedidoMemoria : RepositorioPedido {
   private Dictionary<string, Pedido> pedidos = new Map();
 
   salvarPedido pedido {
-    pedidos.set(pedido.id, pedido);
+    pedidos[pedido.Id] = pedido;
   }
 
   Pedido buscarstring id? {
-    return pedidos.get(id) || null;
+    return pedidos[id] || null;
   }
 }
 
 public class RepositorioPedidoBD : RepositorioPedido {
   salvarPedido pedido {
-    Console.WriteLine(`Salvando pedido ${pedido.id} no banco de dados...`);
+    Console.WriteLine(`Salvando pedido ${pedido.Id} no banco de dados...`);
   }
 
   Pedido buscarstring id? {
@@ -249,11 +253,12 @@ public class ServicoPedido {
   private RepositorioPedido repositorio {}
 
   Pedido criarPedidoDadosPedido dados {
-    const pedido = new Pedido(dados.id, dados.cliente, dados.itens);
+    var pedido = new Pedido(dados.Id, dados.Cliente, dados.Itens);
     repositorio.salvar(pedido);
     return pedido;
   }
 }
+
 
 
 
@@ -284,7 +289,7 @@ public class ServicoRelatorio {
   private LeitorPedido leitor {}
 
   void gerarRelatorio() {
-    const pedidos = leitor.listar();
+    var pedidos = leitor.listar();
     // Gera relatório apenas lendo
   }
 }
@@ -293,10 +298,11 @@ public class ServicoCriacaoPedido {
   private EscritorPedido escritor {}
 
   criarDadosPedido dados {
-    const pedido = new Pedido(dados.id, dados.cliente, dados.itens);
+    var pedido = new Pedido(dados.Id, dados.Cliente, dados.Itens);
     escritor.salvar(pedido);
   }
 }
+
 
 
 
@@ -335,21 +341,21 @@ public class ServicoPedido {
 
   Pedido processarPedidoDadosPedido dados {
     // Criar pedido
-    const pedido = new Pedido(dados.id, dados.cliente, dados.itens);
+    var pedido = new Pedido(dados.Id, dados.Cliente, dados.Itens);
     
     // Calcular total com desconto
-    const subtotal = pedido.itens.Aggregate((sum, item) => sum + item.preco, 0);
-    const desconto = calculadoraDesconto.calcular(dados.cliente, subtotal);
-    pedido.total = subtotal - desconto;
+    var subtotal = pedido.Itens.Sum(item => item.Preco);
+    var desconto = calculadoraDesconto.calcular(dados.Cliente, subtotal);
+    pedido.Total = subtotal - desconto;
     
     // Salvar
     repositorio.salvar(pedido);
     
     // Processar pagamento
-    pagamento.processar(pedido.total);
+    pagamento.processar(pedido.Total);
     
     // Notificar
-    notificacao.notificar(dados.cliente, `Pedido ${pedido.id} criado`);
+    notificacao.notificar(dados.Cliente, `Pedido ${pedido.Id} criado`);
     
     return pedido;
   }
@@ -358,7 +364,7 @@ public class ServicoPedido {
 // Implementações de baixo nível
 public class RepositorioPedidoBD : RepositorioPedido {
   salvarPedido pedido {
-    Console.WriteLine(`Salvando pedido ${pedido.id} no banco de dados...`);
+    Console.WriteLine(`Salvando pedido ${pedido.Id} no banco de dados...`);
   }
 
   Pedido buscarstring id? {
@@ -382,16 +388,17 @@ public class CalculadoraDescontoPorTipo : CalculadoraDesconto {
   private Dictionary<string, EstrategiaDesconto> estrategias = new Map();
 
   public  {
-    estrategias.set('VIP', new DescontoVIP());
-    estrategias.set('Premium', new DescontoPremium());
-    estrategias.set('Regular', new DescontoRegular());
+    estrategias['VIP'] = new DescontoVIP();
+    estrategias['Premium'] = new DescontoPremium();
+    estrategias['Regular'] = new DescontoRegular();
   }
 
   double calcularstring tipoCliente, double subtotal {
-    const estrategia = estrategias.get(tipoCliente) || new DescontoRegular();
+    var estrategia = estrategias[tipoCliente] || new DescontoRegular();
     return estrategia.aplicar(subtotal);
   }
 }
+
 
 
 
@@ -447,7 +454,7 @@ public interface EstrategiaDesconto {
 
 public class RepositorioPedidoBD : RepositorioPedido {
   async Promise salvarPedido pedido<void> {
-    Console.WriteLine(`[BD] Salvando pedido ${pedido.id}...`);
+    Console.WriteLine(`[BD] Salvando pedido ${pedido.Id}...`);
     // Implementação real
   }
 
@@ -499,10 +506,7 @@ public class DescontoRegular : EstrategiaDesconto {
 
 public class CalculadoraPedido {
   double calcularSubtotalPedido pedido {
-    return pedido.itens.Aggregate(
-      (sum, item) => sum + (item.preco * item.quantidade),
-      0
-    );
+    return pedido.Itens.Sum(item => (item.Preco * item.Quantidade));
   }
 
   double aplicarDescontodouble subtotal, EstrategiaDesconto estrategia {
@@ -519,21 +523,21 @@ public class ServicoPedido {
 
   async Promise criarPedidoDadosPedido dados, string tipoCliente<Pedido> {
     // Criar pedido
-    const pedido = new Pedido(dados.id, dados.cliente, dados.itens);
+    var pedido = new Pedido(dados.Id, dados.Cliente, dados.Itens);
 
     // Calcular total
-    const subtotal = calculadora.calcularSubtotal(pedido);
-    const estrategia = obterEstrategiaDesconto(tipoCliente);
-    const desconto = calculadora.aplicarDesconto(subtotal, estrategia);
+    var subtotal = calculadora.calcularSubtotal(pedido);
+    var estrategia = obterEstrategiaDesconto(tipoCliente);
+    var desconto = calculadora.aplicarDesconto(subtotal, estrategia);
     
     pedido.desconto = desconto;
-    pedido.total = subtotal - desconto;
+    pedido.Total = subtotal - desconto;
 
     // Persistir
     await repositorio.salvar(pedido);
 
     // Processar pagamento
-    const pagamentoSucesso = await pagamento.processar(pedido.total, pedido.id);
+    var pagamentoSucesso = await pagamento.processar(pedido.Total, pedido.Id);
     
     if (pagamentoSucesso) {
       pedido.status = 'pago';
@@ -541,9 +545,9 @@ public class ServicoPedido {
       
       // Notificar
       await notificacao.notificar
-        dados.cliente,
+        dados.Cliente,
         'Pedido Confirmado',
-        `Seu pedido ${pedido.id} foi confirmado! R Total$ ${pedido.total}`
+        `Seu pedido ${pedido.Id} foi confirmado! R Total$ ${pedido.Total}`
       ;
     }
 
@@ -551,7 +555,7 @@ public class ServicoPedido {
   }
 
   private EstrategiaDesconto obterEstrategiaDescontostring tipoCliente {
-    const estrategias: Record<string, EstrategiaDesconto> = {
+    var estrategias: Dictionary<string, EstrategiaDesconto> = {
       'VIP': new DescontoVIP(),
       'Premium': new DescontoPremium(),
       'Regular': new DescontoRegular()
@@ -562,15 +566,15 @@ public class ServicoPedido {
 
 // ======= USO =======
 
-async function void main() {
+async Task main() {
   // Configuração de dependências
-  const repositorio = new RepositorioPedidoBD();
-  const pagamento = new ProcessadorPagamentoStripe();
-  const notificacao = new ServicoEmailSMTP();
-  const calculadora = new CalculadoraPedido();
+  var repositorio = new RepositorioPedidoBD();
+  var pagamento = new ProcessadorPagamentoStripe();
+  var notificacao = new ServicoEmailSMTP();
+  var calculadora = new CalculadoraPedido();
 
   // Criar serviço (alto nível)
-  const servico = new ServicoPedido(
+  var servico = new ServicoPedido(
     repositorio,
     pagamento,
     notificacao,
@@ -578,7 +582,7 @@ async function void main() {
   );
 
   // Processar pedido
-  const pedido = await servico.criarPedido
+  var pedido = await servico.criarPedido
     {
       id: '123',
       cliente: 'joao@email.com',
@@ -594,6 +598,7 @@ async function void main() {
 }
 
 main();
+
 
 
 

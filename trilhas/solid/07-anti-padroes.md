@@ -57,6 +57,7 @@ public class ProcessadorPagamento {
 
 
 
+
 ```
 
 **Violação**: SRP - Múltiplas responsabilidades
@@ -75,15 +76,15 @@ public class Pedido {
 }
 
 public class Calculadora {
-  double calcularTotalPedido pedido {
+  public double CalcularTotal(Pedido pedido) {
     // Usa muitos dados do Pedido
-    let total = 0;
-    for (const item of pedido.itens) {
-      total += item.preco * item.quantidade;
+    double total = 0;
+    foreach (var item in pedido.Itens) {
+      total += item.Preco * item.Quantidade;
     }
     
     // Lógica de desconto baseada no cliente
-    if (pedido.cliente.Contains('VIP')) {
+    if (pedido.Cliente.Contains("VIP")) {
       total *= 0.8;
     }
     
@@ -93,13 +94,10 @@ public class Calculadora {
 
 // ✅ SOLUÇÃO: Mover lógica para onde os dados estão
 public class Pedido {
-  double calcularTotal() {
-    let subtotal = itens.Aggregate(
-      (sum, item) => sum + (item.preco * item.quantidade),
-      0
-    );
+  public double CalcularTotal() {
+    var subtotal = itens.Sum(item => item.Preco * item.Quantidade);
     
-    const desconto = calcularDesconto();
+    var desconto = calcularDesconto();
     return subtotal - desconto;
   }
   
@@ -111,6 +109,7 @@ public class Pedido {
     return 0;
   }
 }
+
 
 
 
@@ -162,6 +161,7 @@ public class ProcessadorPix : ProcessadorPagamento {
     Console.WriteLine('Processando PIX...');
   }
 }
+
 
 
 
@@ -237,6 +237,7 @@ public class Quadrado : Forma {
 
 
 
+
 ```
 
 **Violação**: LSP - Subclasse não pode ser substituída
@@ -295,6 +296,7 @@ public class Humano : Trabalhador, Comedor, Dorminhoco, Nadador {
 
 
 
+
 ```
 
 **Violação**: ISP - Clientes forçados a depender de métodos não usados
@@ -325,10 +327,11 @@ public class ServicoPedido {
   private RepositorioPedido repositorio {} // ✅ Depende de abstração
 
   criarPedidoDadosPedido dados {
-    const pedido = new Pedido(dados);
+    var pedido = new Pedido(dados);
     repositorio.salvar(pedido);
   }
 }
+
 
 
 
@@ -355,15 +358,15 @@ public class Pedido {
 public class ServicoPedido {
   double calcularTotalPedido pedido {
     // Toda lógica está fora da classe de domínio
-    return pedido.itens.Aggregate((sum, item) => sum + item.preco, 0);
+    return pedido.Itens.Sum(item => item.Preco);
   }
 
   aplicarDescontoPedido pedido, double percentual {
-    pedido.total = pedido.total * (1 - percentual / 100);
+    pedido.Total = pedido.Total * (1 - percentual / 100);
   }
 
   bool validarPedido pedido {
-    return pedido.itens.length > 0;
+    return pedido.Itens.length > 0;
   }
 }
 
@@ -377,16 +380,13 @@ public class Pedido {
 
   double calcularTotal() {
     // Lógica de negócio na classe de domínio
-    const subtotal = itens.Aggregate(
-      (sum, item) => sum + (item.preco * item.quantidade),
-      0
-    );
+    var subtotal = itens.Sum(item => (item.Preco * item.Quantidade));
     return subtotal - calcularDesconto();
   }
 
   aplicarDescontodouble percentual {
     // Comportamento encapsulado
-    const desconto = calcularTotal() * (percentual / 100);
+    var desconto = calcularTotal() * (percentual / 100);
     // Aplicar desconto...
   }
 
@@ -397,9 +397,10 @@ public class Pedido {
 
   adicionarItemItem item {
     // Comportamento de domínio
-    itens.push(item);
+    itens.Add(item);
   }
 }
+
 
 
 
@@ -477,6 +478,7 @@ public class Usuario {
 
 
 
+
 ```
 
 **Benefício**: Validação centralizada, tipos mais seguros
@@ -542,6 +544,7 @@ public class Pedido {
     return calculadora.calcular(subtotal, estrategia);
   }
 }
+
 
 
 

@@ -53,6 +53,7 @@ public class ServicoUsuario {
 
 
 
+
 ```
 
 **Problemas:**
@@ -108,12 +109,13 @@ public class ServicoUsuario {
 }
 
 // Uso: alto nível controla qual implementação usar
-const mysqlRepo = new MySQLDatabase();
-const servico = new ServicoUsuario(mysqlRepo);
+var mysqlRepo = new MySQLDatabase();
+var servico = new ServicoUsuario(mysqlRepo);
 
 // Fácil trocar implementação
-const postgresRepo = new PostgreSQLDatabase();
-const servico2 = new ServicoUsuario(postgresRepo);
+var postgresRepo = new PostgreSQLDatabase();
+var servico2 = new ServicoUsuario(postgresRepo);
+
 
 
 
@@ -164,6 +166,7 @@ public class ServicoPedido {
 
 
 
+
 ```
 
 #### 2. Property Injection
@@ -183,6 +186,7 @@ public class ServicoPedido {
 
 
 
+
 ```
 
 #### 3. Method Injection
@@ -193,6 +197,7 @@ public class ServicoPedido {
     logger.log('Criando pedido...');
   }
 }
+
 
 
 
@@ -232,11 +237,11 @@ public class RepositorioUsuarioMemoria : RepositorioUsuario {
   private Dictionary<string, Usuario> usuarios = new Map();
 
   Usuario buscarstring id? {
-    return usuarios.get(id) || null;
+    return usuarios[id] || null;
   }
 
   salvarUsuario usuario {
-    usuarios.set(usuario.id, usuario);
+    usuarios[usuario.Id] = usuario;
   }
 }
 
@@ -260,11 +265,12 @@ public class ServicoUsuario {
   }
 
   Usuario criarUsuarioDadosUsuario dados {
-    const usuario = new Usuario(dados);
+    var usuario = new Usuario(dados);
     repositorio.salvar(usuario);
     return usuario;
   }
 }
+
 
 
 
@@ -306,6 +312,7 @@ public class ServicoNotificacao {
     email.enviar(usuario.email, 'Notificação', mensagem);
   }
 }
+
 
 
 
@@ -354,15 +361,16 @@ public class ServicoPedido {
    {}
 
   processarPedido pedido {
-    logger.info(`Processando pedido ${pedido.id}`);
+    logger.info(`Processando pedido ${pedido.Id}`);
     try {
       repositorio.salvar(pedido);
-      logger.info(`Pedido ${pedido.id} processado com sucesso`);
+      logger.info(`Pedido ${pedido.Id} processado com sucesso`);
     } catch (erro) {
-      logger.erro(`Erro ao processar pedido ${pedido.id}`, erro);
+      logger.erro(`Erro ao processar pedido ${pedido.Id}`, erro);
     }
   }
 }
+
 
 
 
@@ -398,11 +406,11 @@ public class Container {
   private Dictionary<string, any> dependencias = new Map();
 
   registrar<T>string nome, factory: ( => T) {
-    dependencias.set(nome, factory);
+    dependencias[nome] = factory;
   }
 
   resolver<T>string nome: T {
-    const factory = dependencias.get(nome);
+    var factory = dependencias[nome];
     if (!factory) {
       throw new Exception(`Dependência ${nome} não registrada`);
     }
@@ -411,7 +419,7 @@ public class Container {
 }
 
 // Configuração
-const container = new Container();
+var container = new Container();
 
 container.registrar('Repositorio', () => new RepositorioUsuarioBD());
 container.registrar('Logger', () => new LoggerConsole());
@@ -423,7 +431,8 @@ container.registrar('ServicoUsuario', () =>
 );
 
 // Uso
-const servico = container.resolver<ServicoUsuario>('ServicoUsuario');
+var servico = container.resolver<ServicoUsuario>('ServicoUsuario');
+
 
 
 
@@ -457,9 +466,9 @@ public class ServicoPedido {
    {}
 
   Pedido criarPedidoDadosPedido dados {
-    const pedido = new Pedido(dados.id, dados.itens, dados.total);
+    var pedido = new Pedido(dados.Id, dados.itens, dados.Total);
     repositorio.salvar(pedido);
-    pagamento.processar(pedido.total);
+    pagamento.processar(pedido.Total);
     return pedido;
   }
 }
@@ -484,6 +493,7 @@ public class ServicoPagamentoStripe : ServicoPagamento {
 
 
 
+
 ```
 
 ### DIP e Testes
@@ -496,11 +506,11 @@ public class RepositorioUsuarioMock : RepositorioUsuario {
   private Dictionary<string, Usuario> usuarios = new Map();
 
   Usuario buscarstring id? {
-    return usuarios.get(id) || null;
+    return usuarios[id] || null;
   }
 
   salvarUsuario usuario {
-    usuarios.set(usuario.id, usuario);
+    usuarios[usuario.Id] = usuario;
   }
 }
 
@@ -508,7 +518,7 @@ public class LoggerMock : Logger {
   private List<logs> string = new List<logs>();
 
   infostring mensagem {
-    logs.push(`[INFO] ${mensagem}`);
+    logs.Add($"[INFO] {mensagem}");
   }
 
   string getLogs()[] {
@@ -522,16 +532,17 @@ public class LoggerMock : Logger {
 // Testes
 describe('ServicoUsuario', () => {
   it('deve criar usuário', () => {
-    const repositorio = new RepositorioUsuarioMock();
-    const logger = new LoggerMock();
-    const servico = new ServicoUsuario(repositorio, logger);
+    var repositorio = new RepositorioUsuarioMock();
+    var logger = new LoggerMock();
+    var servico = new ServicoUsuario(repositorio, logger);
 
-    const usuario = servico.criarUsuario{ nome: 'João', email: 'joao@email.com' };
+    var usuario = servico.criarUsuario{ nome: 'João', email: 'joao@email.com' };
 
     expect(usuario.nome).toBe('João');
-    expect(repositorio.buscar(usuario.id)).toBe(usuario);
+    expect(repositorio.buscar(usuario.Id)).toBe(usuario);
   });
 });
+
 
 
 
@@ -569,11 +580,12 @@ public class ServicoPedido {
    {}
 
   criarPedidoDadosPedido dados {
-    const pedido = new Pedido(dados);
+    var pedido = new Pedido(dados);
     repositorio.salvar(pedido);
     eventPublisher.publicar(new PedidoCriadoEvent(pedido));
   }
 }
+
 
 
 
@@ -593,6 +605,7 @@ public interface Somador {
 function double somardouble a, double b {
   return a + b;
 }
+
 
 
 
@@ -626,6 +639,7 @@ public class Servico {
     private ConfiguracaoServicos servicos
    {}
 }
+
 
 
 

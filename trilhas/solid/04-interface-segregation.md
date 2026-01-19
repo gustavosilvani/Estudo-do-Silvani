@@ -82,6 +82,7 @@ public class Passaro : Trabalhador {
 
 
 
+
 ```
 
 **Problemas:**
@@ -166,6 +167,7 @@ public class Peixe : Comedor, Dorminhoco, Nadador {
 
 
 
+
 ```
 
 **Benefícios:**
@@ -246,6 +248,7 @@ public class ServicoEscrita<T> {
 
 
 
+
 ```
 
 #### 2. Interfaces de Dispositivos
@@ -303,6 +306,7 @@ public class Radio : Ligavel, ControlavelVolume {
 
 
 
+
 ```
 
 #### 3. Interfaces de Autenticação
@@ -348,6 +352,7 @@ public class ServicoLogin {
 
 
 
+
 ```
 
 ### Benefícios Práticos
@@ -390,8 +395,8 @@ public class GerenciadorConfiguracao {
    {}
   
   atualizarConfiguracao config {
-    const atual = leitor.ler();
-    const nova = { ...atual, ...config };
+    var atual = leitor.ler();
+    var nova = { ...atual, ...config };
     escritor.escrever(nova);
   }
 }
@@ -409,6 +414,7 @@ public class EscritorBancoDados : EscritorConfiguracao {
     // Escreve no banco
   }
 }
+
 
 
 
@@ -433,6 +439,7 @@ public class AdapterPagamentoExterno : Pagador {
     sistemaExterno.processarPagamento(valor);
   }
 }
+
 
 
 
@@ -466,11 +473,12 @@ public class ServicoOrdem {
    {}
   
   criarOrdemstring usuarioId, DadosPedido dadosPedido {
-    const usuario = usuarios.buscarUsuario(usuarioId);
-    const pedido = pedidos.criarPedido(dadosPedido);
-    pagamentos.processarPagamento(pedido.id, pedido.valor);
+    var usuario = usuarios.buscarUsuario(usuarioId);
+    var pedido = pedidos.criarPedido(dadosPedido);
+    pagamentos.processarPagamento(pedido.Id, pedido.valor);
   }
 }
+
 
 
 
@@ -498,13 +506,14 @@ type RepositorioCompleto<T> = Leitor<T> & Escritor<T>;
 
 // Clientes podem usar tipos específicos
 function processarLeitura<T>Leitor leitor<T> {
-  const itens = leitor.listar();
+  var itens = leitor.listar();
   // Processa apenas leitura
 }
 
 function processarEscrita<T>Escritor escritor<T>, T entidade {
   escritor.criar(entidade);
 }
+
 
 
 
@@ -532,6 +541,7 @@ public interface GerenciadorNome {
 
 
 
+
 ```
 
 **Regra**: Segregue quando métodos não estão relacionados ou não são sempre usados juntos.
@@ -548,6 +558,7 @@ public interface UnicoMetodo {
 public class ClasseDireta {
   void fazer() { }
 }
+
 
 
 

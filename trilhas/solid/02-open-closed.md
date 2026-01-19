@@ -47,6 +47,7 @@ public class CalculadoraDesconto
 
 
 
+
 ```
 
 **Problemas:**
@@ -105,6 +106,7 @@ public class DescontoGold : IEstrategiaDesconto
 
 
 
+
 ```
 
 **Benefícios:**
@@ -149,6 +151,7 @@ public class Circulo : Forma {
 
 
 
+
 ```
 
 #### 2. Composição e Interfaces (Preferível)
@@ -188,6 +191,7 @@ public class ProcessadorPix : ProcessadorPagamento {
 
 
 
+
 ```
 
 ### Casos de Uso Comuns
@@ -202,7 +206,7 @@ public class FiltroProdutos {
   }
   
   Produto filtrarPorPrecoList produtos<Produto>, List<precoMax> double {
-    return produtos.Where(p => p.preco <= precoMax);
+    return produtos.Where(p => p.Preco <= precoMax);
   }
   
   // Para adicionar novo filtro, precisamos modificar a classe
@@ -225,7 +229,7 @@ public class FiltroPreco : Filtro {
   private double precoMax {}
   
   Produto aplicarList produtos<Produto>[] {
-    return produtos.Where(p => p.preco <= precoMax);
+    return produtos.Where(p => p.Preco <= precoMax);
   }
 }
 
@@ -235,6 +239,7 @@ public class FiltroEstoque : Filtro {
     return produtos.Where(p => p.estoque > 0);
   }
 }
+
 
 
 
@@ -274,6 +279,7 @@ public class ProcessadorTexto {
     );
   }
 }
+
 
 
 
@@ -336,6 +342,7 @@ public class EstrategiaB : Estrategia {
 
 
 
+
 ```
 
 ### OCP e Template Method Pattern
@@ -373,6 +380,7 @@ public class ProcessadorPDF : ProcessadorDocumento {
 
 
 
+
 ```
 
 ### OCP em Arquitetura
@@ -387,7 +395,7 @@ public class ServicoPedido {
    {}
   
   criarPedidoDadosPedido dados {
-    const pedido = new Pedido(dados);
+    var pedido = new Pedido(dados);
     repositorio.salvar(pedido);
     notificador.notificar(pedido);
   }
@@ -400,6 +408,7 @@ public interface PluginPedido {
 }
 
 // Sistema pode registrar plugins sem modificar ServicoPedido
+
 
 
 
@@ -438,6 +447,7 @@ public class ProvedorSendGrid : ProvedorEmail {
 
 
 
+
 ```
 
 ### Armadilhas Comuns
@@ -454,6 +464,7 @@ public interface Calculadora {
 function double somardouble a, double b {
   return a + b;
 }
+
 
 
 
@@ -488,6 +499,7 @@ public class Soma : Operacao {
     return a + b;
   }
 }
+
 
 
 

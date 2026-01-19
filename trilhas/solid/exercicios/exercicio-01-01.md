@@ -56,6 +56,7 @@ public class Usuario {
 
 
 
+
 ```
 
 ## ❓ Perguntas
@@ -134,6 +135,7 @@ public class GeradorRelatorio {
     return `Relatório do usuário: ${usuario.nome} (${usuario.email})`;
   }
 }
+
 
 
 

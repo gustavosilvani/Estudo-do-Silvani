@@ -56,6 +56,7 @@ public class Usuario
 
 
 
+
 ```
 
 **Problemas:**
@@ -104,6 +105,7 @@ public class ServicoEmail
         Console.WriteLine($"Enviando email para {email}: {mensagem}";
     }
 }
+
 
 
 
@@ -189,6 +191,7 @@ public class RepositorioPedido
 
 
 
+
 ```
 
 #### 2. Separação de Apresentação e Lógica
@@ -233,6 +236,7 @@ public class EnviadorRelatorio
         // Envia email
     }
 }
+
 
 
 
@@ -299,18 +303,19 @@ public ProcessarPedido(Pedido pedido) {
 
 
 
+
 ```
 
 #### Nível de Módulo/Pacote
 
-```typescript
+```
 // Estrutura de pastas seguindo SRP
 src/
-├── domain/          // Responsabilidade: Modelos de domínio
-├── services/        // Responsabilidade: Lógica de negócio
-├── repositories/    // Responsabilidade: Acesso a dados
-├── controllers/     // Responsabilidade: HTTP/API
-└── utils/           // Responsabilidade: Utilitários
+├── Domain/          // Responsabilidade: Modelos de domínio
+├── Services/        // Responsabilidade: Lógica de negócio
+├── Repositories/    // Responsabilidade: Acesso a dados
+├── Controllers/     // Responsabilidade: HTTP/API
+└── Utils/           // Responsabilidade: Utilitários
 ```
 
 ### SRP e Coesão
@@ -372,6 +377,7 @@ public class Usuario
 
 
 
+
 ```
 
 **Regra**: Se responsabilidades estão intimamente relacionadas e sempre mudam juntas, podem estar na mesma classe.
@@ -389,6 +395,7 @@ public class GerenciadorUsuario
     public Deletar(string id) { }
     public Usuario void Buscar(string id) { }
 }
+
 
 
 

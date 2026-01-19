@@ -90,6 +90,21 @@ Referências e materiais adicionais sobre os princípios SOLID.
    - Refatorações automáticas
    - Detecção de code smells
 
+## 💡 Exemplos Práticos
+
+### Exemplos da Trilha
+
+1. **Exemplos Extras**
+   - [Exemplos Extras](./exemplos-extras.md)
+   - Exemplos práticos de cada princípio SOLID em C#
+   - Casos de uso avançados e refatorações
+
+2. **Microsserviço de Logística**
+   - [Código Completo](./microsservico-logistica-codigo.md) - Implementação completa em C# com comentários explicativos
+   - [Documentação Explicativa](./microsservico-logistica-documentacao.md) - Análise detalhada da aplicação de cada princípio SOLID
+   - Exemplo prático de microsserviço aplicando todos os princípios SOLID
+   - Inclui diagramas, fluxos e exemplos de extensibilidade
+
 ## 📝 Documentação
 
 ### TypeScript/JavaScript

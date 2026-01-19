@@ -66,7 +66,12 @@ Consulte [recursos adicionais](./recursos/referencias.md) para aprofundar seu co
 
 ### Exemplos Práticos Adicionais
 
-Para exemplos práticos adicionais, consulte a seção de [Exemplos Extras](./recursos/exemplos-extras.md) que contém exemplos práticos de cada princípio SOLID convertidos para C#.
+Para exemplos práticos adicionais, consulte:
+
+- [Exemplos Extras](./recursos/exemplos-extras.md) - Exemplos práticos de cada princípio SOLID convertidos para C#
+- [Microsserviço de Logística](./recursos/microsservico-logistica-codigo.md) - Exemplo completo de microsserviço aplicando todos os princípios SOLID
+  - [Código Completo](./recursos/microsservico-logistica-codigo.md) - Código em C# com comentários explicativos
+  - [Documentação Explicativa](./recursos/microsservico-logistica-documentacao.md) - Explicação detalhada de como cada princípio foi aplicado
 
 ## 🔗 Relação com Outras Trilhas
 

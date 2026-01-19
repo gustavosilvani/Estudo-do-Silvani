@@ -66,6 +66,7 @@ function testarRetanguloRetangulo retangulo {
 
 
 
+
 ```
 
 **Problemas:**
@@ -114,13 +115,14 @@ public class Quadrado : Forma {
 
 // Ambas podem ser usadas onde Forma é esperado
 function double calcularAreaTotalList formas<Forma> {
-  return formas.Aggregate((total, forma) => total + forma.calcularArea(), 0);
+  return formas.Sum(forma => forma.CalcularArea());
 }
 
 // Funciona com qualquer implementação de Forma
-const retangulo = new Retangulo(5, 4);
-const quadrado = new Quadrado(4);
+var retangulo = new Retangulo(5, 4);
+var quadrado = new Quadrado(4);
 calcularAreaTotal([retangulo, quadrado]); // ✅ Funciona corretamente
+
 
 
 
@@ -184,7 +186,7 @@ public class ContaPoupanca : ContaBancaria {
     }
     // Permite saque mesmo com saldo menor (com taxa)
     if (valor > saldo) {
-      const taxa = (valor - saldo) * 0.1;
+      var taxa = (valor - saldo) * 0.1;
       saldo -= (valor + taxa);
     } else {
       saldo -= valor;
@@ -211,6 +213,7 @@ public class ContaRestrita : ContaBancaria {
 
 
 
+
 ```
 
 ### Casos de Uso Comuns
@@ -229,11 +232,11 @@ public class Lista<T> : Colecao<T> {
   private List<itens> T = new List<itens>();
 
   adicionarT item {
-    itens.push(item);
+    itens.Add(item);
   }
 
   removerT item {
-    const index = itens.indexOf(item);
+    var index = itens.indexOf(item);
     if (index > -1) {
       itens.splice(index, 1);
     }
@@ -267,6 +270,7 @@ function processarColecao<T>Colecao colecao<T> {
 
 
 
+
 ```
 
 #### 2. Repositórios
@@ -282,11 +286,11 @@ public class RepositorioMemoria<T> : Repositorio<T> {
   private Dictionary<string, T> dados = new Map();
 
   T buscarstring id? {
-    return dados.get(id) || null;
+    return dados[id] || null;
   }
 
   salvarT entidade {
-    dados.set('id', entidade);
+    dados['id'] = entidade;
   }
 
   deletarstring id {
@@ -314,10 +318,11 @@ public class Servico<T> {
   private Repositorio repositorio<T> {}
 
   processarstring id {
-    const entidade = repositorio.buscar(id);
+    var entidade = repositorio.buscar(id);
     // Funciona com qualquer repositório
   }
 }
+
 
 
 
@@ -367,6 +372,7 @@ public class LeitorArquivoSeguro : LeitorArquivo {
 
 
 
+
 ```
 
 ### LSP e Valores de Retorno
@@ -402,6 +408,7 @@ public class Gato : Animal {
 
 
 
+
 ```
 
 ### LSP e Parâmetros
@@ -423,6 +430,7 @@ public class ProcessadorCachorro : ProcessadorAnimal {
     }
   }
 }
+
 
 
 
@@ -459,13 +467,14 @@ public class ContadorLimitado : Contador {
 
 // Código cliente espera que sempre incremente
 function testarContadorContador contador {
-  const valorInicial = contador.obterValor();
+  var valorInicial = contador.obterValor();
   contador.incrementar();
-  const valorFinal = contador.obterValor();
+  var valorFinal = contador.obterValor();
   
   // Espera: valorFinal > valorInicial
   // Mas com ContadorLimitado pode não ser verdade!
 }
+
 
 
 
@@ -500,15 +509,16 @@ public class RepositorioUsuarioMock : RepositorioUsuario {
   private Dictionary<string, Usuario> usuarios = new Map();
 
   Usuario buscarstring id? {
-    return usuarios.get(id) || null;
+    return usuarios[id] || null;
   }
 }
 
 // Testes podem usar mock sem modificar código
 function testarServicoRepositorioUsuario repositorio {
-  const servico = new ServicoUsuario(repositorio);
+  var servico = new ServicoUsuario(repositorio);
   // Testes funcionam com qualquer implementação
 }
+
 
 
 

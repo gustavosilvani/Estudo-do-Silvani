@@ -30,6 +30,7 @@ public class BookingService
         Console.WriteLine($"Enviando e-mail de confirmação para {bookingDetails.Email}");
     }
 }
+
 ```
 
 **✅ Solução Aplicando SRP:**
@@ -97,6 +98,7 @@ public class BookingService
         _emailService.SendConfirmation(bookingDetails.Email);
     }
 }
+
 ```
 
 ### SRP - Exemplo 2: CheckoutService (Orquestração)
@@ -131,6 +133,7 @@ public class CheckoutService
         Console.WriteLine($"Processando pagamento para o usuário {userId}");
     }
 }
+
 ```
 
 **✅ Solução Aplicando SRP:**
@@ -199,6 +202,7 @@ public class CheckoutService
         _paymentProcessor.ProcessPayment(userId, totalWithTaxes);
     }
 }
+
 ```
 
 ### SRP - Exemplo 3: FileUploadService (Orquestração)
@@ -224,6 +228,7 @@ public class FileUploadService
         return file.Take(file.Length / 2).ToArray();
     }
 }
+
 ```
 
 **✅ Solução Aplicando SRP:**
@@ -267,6 +272,7 @@ public class FileUploadService
         _uploader.Upload(compressedFile, destination);
     }
 }
+
 ```
 
 ### OCP - Exemplo 1: ReportProcessor
@@ -292,6 +298,7 @@ public class ReportProcessor
         }
     }
 }
+
 ```
 
 **Problema**: Para adicionar um novo tipo de relatório (ex: Excel), precisamos MODIFICAR a classe.
@@ -339,6 +346,7 @@ public class ExcelReport : IReport
         Console.WriteLine("Processing Excel report...");
     }
 }
+
 ```
 
 ### LSP - Exemplo 1: Rectangle e Square
@@ -390,6 +398,7 @@ public void ResizeRectangle(Rectangle rectangle)
     rectangle.SetDimensions(4, 5); // Funciona para Rectangle, mas quebra para Square!
     Console.WriteLine($"Área ajustada: {rectangle.GetArea()}");
 }
+
 ```
 
 **Problema**: Square não pode substituir Rectangle sem quebrar o comportamento esperado.
@@ -451,6 +460,7 @@ public double CalculateTotalArea(List<Shape> shapes)
 {
     return shapes.Sum(s => s.GetArea());
 }
+
 ```
 
 ### ISP-DIP - Exemplo: Dependency Injection com Interfaces
@@ -473,6 +483,7 @@ public class UserService
         _database.Save(name);
     }
 }
+
 ```
 
 **✅ Solução Aplicando DIP e ISP:**
@@ -545,6 +556,7 @@ var mysqlDb = new MySQLDatabase();
 var userService = new UserService(mysqlDb);
 var checkoutService = new CheckoutService(userService);
 checkoutService.Checkout();
+
 ```
 
 ## 🎯 Casos de Uso Reais
