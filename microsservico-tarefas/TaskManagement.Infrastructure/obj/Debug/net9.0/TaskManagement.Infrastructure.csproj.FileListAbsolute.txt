@@ -1,0 +1,16 @@
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\obj\Debug\net9.0\TaskManagement.Infrastructure.csproj.AssemblyReference.cache
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\obj\Debug\net9.0\TaskManagement.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\obj\Debug\net9.0\TaskManagement.Infrastructure.AssemblyInfoInputs.cache
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\obj\Debug\net9.0\TaskManagement.Infrastructure.AssemblyInfo.cs
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\obj\Debug\net9.0\TaskManagement.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\obj\Debug\net9.0\TaskManagement.Infrastructure.sourcelink.json
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\bin\Debug\net9.0\TaskManagement.Infrastructure.deps.json
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\bin\Debug\net9.0\TaskManagement.Infrastructure.dll
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\bin\Debug\net9.0\TaskManagement.Infrastructure.pdb
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\bin\Debug\net9.0\TaskManagement.Domain.dll
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\bin\Debug\net9.0\TaskManagement.Domain.pdb
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\obj\Debug\net9.0\TaskMana.BCA0E1A6.Up2Date
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\obj\Debug\net9.0\TaskManagement.Infrastructure.dll
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\obj\Debug\net9.0\refint\TaskManagement.Infrastructure.dll
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\obj\Debug\net9.0\TaskManagement.Infrastructure.pdb
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Infrastructure\obj\Debug\net9.0\ref\TaskManagement.Infrastructure.dll

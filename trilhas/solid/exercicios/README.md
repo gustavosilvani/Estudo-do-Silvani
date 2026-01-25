@@ -13,14 +13,14 @@ Bem-vindo à seção de exercícios da trilha SOLID! Aqui você encontrará exer
 
 ### Módulo 01 - Single Responsibility Principle
 
-- [Exercício 1.1](./exercicio-01-01.md) - Identificar violações de SRP
-- [Exercício 1.2](./exercicio-01-02.md) - Refatorar classe com múltiplas responsabilidades
-- [Exercício 1.3](./exercicio-01-03.md) - Aplicar SRP em código real
+- [Exercício 1.1](./exercicio-01-01.md) - Identificar violações de SRP ✅
+- [Exercício 1.2](./exercicio-01-02.md) - Refatorar classe com múltiplas responsabilidades ✅
+- [Exercício 1.3](./exercicio-01-03.md) - Aplicar SRP em código real ✅
 
 ### Módulo 02 - Open/Closed Principle
 
-- [Exercício 2.1](./exercicio-02-01.md) - Identificar violações de OCP
-- [Exercício 2.2](./exercicio-02-02.md) - Refatorar usando Strategy Pattern
+- [Exercício 2.1](./exercicio-02-01.md) - Identificar violações de OCP ✅
+- [Exercício 2.2](./exercicio-02-02.md) - Refatorar usando Strategy Pattern ✅
 - [Exercício 2.3](./exercicio-02-03.md) - Aplicar OCP em sistema de filtros
 
 ### Módulo 03 - Liskov Substitution Principle

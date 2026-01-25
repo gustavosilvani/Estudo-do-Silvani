@@ -1,0 +1,12 @@
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Domain\obj\Debug\net9.0\TaskManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Domain\obj\Debug\net9.0\TaskManagement.Domain.AssemblyInfoInputs.cache
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Domain\obj\Debug\net9.0\TaskManagement.Domain.AssemblyInfo.cs
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Domain\obj\Debug\net9.0\TaskManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Domain\obj\Debug\net9.0\TaskManagement.Domain.sourcelink.json
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Domain\bin\Debug\net9.0\TaskManagement.Domain.deps.json
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Domain\bin\Debug\net9.0\TaskManagement.Domain.dll
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Domain\bin\Debug\net9.0\TaskManagement.Domain.pdb
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Domain\obj\Debug\net9.0\TaskManagement.Domain.dll
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Domain\obj\Debug\net9.0\refint\TaskManagement.Domain.dll
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Domain\obj\Debug\net9.0\TaskManagement.Domain.pdb
+C:\Workspace\Estudo do Silvani\microsservico-tarefas\TaskManagement.Domain\obj\Debug\net9.0\ref\TaskManagement.Domain.dll

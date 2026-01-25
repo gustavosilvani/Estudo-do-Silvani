@@ -14,37 +14,37 @@ public class Usuario {
   private string email;
   private string senha;
 
-  public nome(string email: string, senha: string {
-    nome = nome;
-    email = email;
-    senha = senha;
+  public Usuario(string nome, string email, string senha) {
+    this.nome = nome;
+    this.email = email;
+    this.senha = senha;
   }
 
-  // Responsabilidade 1?
-  bool validarEmail() {
+  // Responsabilidade 1: Validação de email
+  public bool ValidarEmail() {
     return email.Contains('@') && email.Contains('.');
   }
 
-  // Responsabilidade 2?
-  bool validarSenha() {
-    return senha.length >= 8;
+  // Responsabilidade 2: Validação de senha
+  public bool ValidarSenha() {
+    return senha.Length >= 8;
   }
 
-  // Responsabilidade 3?
-  string criptografarSenha() {
-    // Simulação de criptografia
-    return btoa(senha);
+  // Responsabilidade 3: Criptografia de senha
+  public string CriptografarSenha() {
+    // Simulação de criptografia usando Base64
+    return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(senha));
   }
 
-  // Responsabilidade 4?
-  void salvar() {
-    Console.WriteLine(`Salvando usuário ${nome} no banco de dados...`);
+  // Responsabilidade 4: Persistência
+  public void Salvar() {
+    Console.WriteLine($"Salvando usuário {nome} no banco de dados...");
     // Código de persistência
   }
 
-  // Responsabilidade 5?
-  void enviarEmailBoasVindas() {
-    Console.WriteLine(`Enviando email de boas-vindas para ${email}`);
+  // Responsabilidade 5: Notificação
+  public void EnviarEmailBoasVindas() {
+    Console.WriteLine($"Enviando email de boas-vindas para {email}");
     // Código de envio de email
   }
 
@@ -87,52 +87,50 @@ A classe `Usuario` tem **6 responsabilidades**:
 ```csharp
 // Responsabilidade: Representar dados do usuário
 public class Usuario {
-  public 
-    public string nome { get; set; },
-    public string email { get; set; },
-    public string senha { get; set; }
-   {}
+  public string Nome { get; set; }
+  public string Email { get; set; }
+  public string Senha { get; set; }
 }
 
 // Responsabilidade: Validar emails
 public class ValidadorEmail {
-  bool validarstring email {
+  public bool Validar(string email) {
     return email.Contains('@') && email.Contains('.');
   }
 }
 
 // Responsabilidade: Validar senhas
 public class ValidadorSenha {
-  bool validarstring senha {
-    return senha.length >= 8;
+  public bool Validar(string senha) {
+    return senha.Length >= 8;
   }
 }
 
 // Responsabilidade: Criptografar senhas
 public class CriptografadorSenha {
-  string criptografarstring senha {
-    return btoa(senha);
+  public string Criptografar(string senha) {
+    return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(senha));
   }
 }
 
 // Responsabilidade: Persistir usuários
 public class RepositorioUsuario {
-  salvarUsuario usuario {
-    Console.WriteLine(`Salvando usuário ${usuario.nome} no banco de dados...`);
+  public void Salvar(Usuario usuario) {
+    Console.WriteLine($"Salvando usuário {usuario.Nome} no banco de dados...");
   }
 }
 
 // Responsabilidade: Enviar emails
 public class ServicoEmail {
-  enviarBoasVindasstring email {
-    Console.WriteLine(`Enviando email de boas-vindas para ${email}`);
+  public void EnviarBoasVindas(string email) {
+    Console.WriteLine($"Enviando email de boas-vindas para {email}");
   }
 }
 
 // Responsabilidade: Gerar relatórios
 public class GeradorRelatorio {
-  string gerarRelatorioUsuarioUsuario usuario {
-    return `Relatório do usuário: ${usuario.nome} (${usuario.email})`;
+  public string GerarRelatorio(Usuario usuario) {
+    return $"Relatório do usuário: {usuario.Nome} ({usuario.Email})";
   }
 }
 

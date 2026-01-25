@@ -1,0 +1,26 @@
+# Binários e builds
+bin/
+obj/
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Logs
+*.log
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Pacotes NuGet
+packages/
+
+# Arquivos de configuração local
+appsettings.Development.json

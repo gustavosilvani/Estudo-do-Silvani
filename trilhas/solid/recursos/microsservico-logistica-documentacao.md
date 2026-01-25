@@ -82,6 +82,64 @@ graph TB
     INotificador <|.. NotificadorPush
 ```
 
+### Diagrama de Dependências SOLID
+
+```mermaid
+graph TD
+    subgraph "SOLID Principles Flow"
+        SRP[SRP<br/>Single Responsibility] --> OCP[OCP<br/>Open/Closed]
+        OCP --> LSP[LSP<br/>Liskov Substitution]
+        LSP --> ISP[ISP<br/>Interface Segregation]
+        ISP --> DIP[DIP<br/>Dependency Inversion]
+    end
+
+    subgraph "Implementation Benefits"
+        SRP --> A[Testabilidade]
+        OCP --> B[Extensibilidade]
+        LSP --> C[Substituibilidade]
+        ISP --> D[Especialização]
+        DIP --> E[Flexibilidade]
+    end
+
+    A --> F[Código Limpo]
+    B --> F
+    C --> F
+    D --> F
+    E --> F
+```
+
+### Diagrama de Fluxo de Responsabilidades
+
+```mermaid
+stateDiagram-v2
+    [*] --> ReceberPedido: Cliente faz pedido
+
+    state "Processamento SRP" as SRP_Process
+    ReceberPedido --> SRP_Process
+
+    state "RastreamentoService" as Rast
+    state "CalculadoraFrete" as Calc
+    state "EstoqueService" as Est
+    state "NotificacaoService" as Notif
+
+    SRP_Process --> Rast: Uma responsabilidade
+    SRP_Process --> Calc: Uma responsabilidade
+    SRP_Process --> Est: Uma responsabilidade
+    SRP_Process --> Notif: Uma responsabilidade
+
+    Rast --> AtualizarStatus: Atualiza status
+    Calc --> CalcularValor: Calcula frete
+    Est --> ReservarItens: Reserva estoque
+    Notif --> EnviarNotificacao: Envia notificações
+
+    AtualizarStatus --> PedidoProcessado
+    CalcularValor --> PedidoProcessado
+    ReservarItens --> PedidoProcessado
+    EnviarNotificacao --> PedidoProcessado
+
+    PedidoProcessado --> [*]: Pedido concluído
+```
+
 ### Camadas da Arquitetura
 
 1. **Domain Layer**: Entidades de domínio (Pedido, ItemPedido, Endereco)
@@ -607,6 +665,60 @@ sequenceDiagram
 
 ---
 
+### Diagrama de Fluxo Completo do Sistema
+
+```mermaid
+flowchart TD
+    Client[👤 Cliente] --> API[🚚 API do Microsserviço]
+    API --> Validation{✅ Validação}
+
+    Validation --> |Inválido| Error[❌ Erro de Validação]
+    Validation --> |Válido| StockCheck[📦 Verificar Estoque]
+
+    StockCheck --> |Sem Estoque| OutOfStock[❌ Sem Estoque]
+    StockCheck --> |Com Estoque| ReserveStock[🔒 Reservar Estoque]
+
+    ReserveStock --> CalculateFreight[💰 Calcular Frete]
+    CalculateFreight --> SaveOrder[💾 Salvar Pedido]
+
+    SaveOrder --> CreateTracking[📍 Criar Rastreamento]
+    CreateTracking --> NotifyCreation[📢 Notificar Criação]
+
+    NotifyCreation --> UpdateStatus[🔄 Atualizar Status]
+    UpdateStatus --> NotifyUpdate[📢 Notificar Atualização]
+
+    NotifyUpdate --> Success[✅ Pedido Processado]
+
+    Error --> Client
+    OutOfStock --> Client
+    Success --> Client
+
+    subgraph "SRP - Serviços Separados"
+        StockCheck --> EstoqueService
+        CalculateFreight --> CalculadoraFrete
+        CreateTracking --> RastreamentoService
+        NotifyCreation --> NotificacaoService
+    end
+
+    subgraph "OCP - Estratégias Extensíveis"
+        CalculateFreight --> FretePadrao
+        CalculateFreight --> FreteExpresso
+        CalculateFreight --> FreteEconomico
+    end
+
+    subgraph "LSP - Substituição Segura"
+        NotificacaoService --> NotificadorEmail
+        NotificacaoService --> NotificadorSMS
+        NotificacaoService --> NotificadorPush
+    end
+
+    subgraph "DIP - Dependências Invertidas"
+        EstoqueService --> ILeitorEstoque
+        CalculadoraFrete --> IEstrategiaFrete
+        RastreamentoService --> IRepositorioPedido
+    end
+```
+
 ## 🔧 Extensibilidade
 
 ### Como Adicionar Novo Tipo de Frete (OCP)
@@ -821,6 +933,199 @@ public void CalcularFrete_ComFreteEconomico_DeveRetornarValorMenor()
 | **Complexidade** | Alta (código entrelaçado) | Baixa (responsabilidades claras) |
 
 ---
+
+## 🔄 Exemplos Práticos de Refatoração
+
+### Refatoração 1: De Classe Monolítica para SRP
+
+**❌ Código Original (Problema)**
+
+```csharp
+// Classe monolítica - viola SRP
+public class PedidoProcessor {
+    public void ProcessarPedidoCompleto(Pedido pedido) {
+        // Validação
+        if (pedido == null) throw new Exception("Pedido inválido");
+
+        // Cálculo de frete
+        pedido.ValorFrete = pedido.PesoTotal * 0.5m;
+
+        // Salvamento
+        SalvarNoBanco(pedido);
+
+        // Notificação
+        EnviarEmailConfirmacao(pedido);
+
+        // Rastreamento
+        pedido.CodigoRastreamento = GerarCodigo();
+    }
+}
+```
+
+**✅ Código Refatorado (Solução)**
+
+```csharp
+// Aplicando SRP - cada classe com uma responsabilidade
+public interface IValidadorPedido {
+    bool Validar(Pedido pedido);
+}
+
+public interface ICalculadoraFrete {
+    decimal Calcular(Pedido pedido);
+}
+
+public interface IRepositorioPedido {
+    void Salvar(Pedido pedido);
+}
+
+public class PedidoProcessor {
+    private readonly IValidadorPedido _validador;
+    private readonly ICalculadoraFrete _calculadora;
+    private readonly IRepositorioPedido _repositorio;
+
+    public PedidoProcessor(
+        IValidadorPedido validador,
+        ICalculadoraFrete calculadora,
+        IRepositorioPedido repositorio) {
+        _validador = validador;
+        _calculadora = calculadora;
+        _repositorio = repositorio;
+    }
+
+    public void ProcessarPedidoCompleto(Pedido pedido) {
+        if (!_validador.Validar(pedido))
+            throw new Exception("Pedido inválido");
+
+        pedido.ValorFrete = _calculadora.Calcular(pedido);
+        _repositorio.Salvar(pedido);
+    }
+}
+```
+
+**🎯 Benefícios da Refatoração**
+- **Testabilidade**: Cada componente testado isoladamente
+- **Manutenibilidade**: Mudanças em cálculo não afetam validação
+- **Reutilização**: Validador pode ser usado em outros contextos
+
+### Refatoração 2: De Condicionais para OCP
+
+**❌ Código Original (Problema)**
+
+```csharp
+// Viola OCP - modificação necessária para novos tipos
+public class CalculadoraDesconto {
+    public decimal CalcularDesconto(string tipoCliente, decimal valor) {
+        if (tipoCliente == "VIP") return valor * 0.1m;
+        if (tipoCliente == "Premium") return valor * 0.15m;
+        if (tipoCliente == "Gold") return valor * 0.2m;
+        return 0;
+    }
+}
+```
+
+**✅ Código Refatorado (Solução)**
+
+```csharp
+// Aplicando OCP - extensão sem modificação
+public interface IEstrategiaDesconto {
+    string TipoCliente { get; }
+    decimal CalcularDesconto(decimal valor);
+}
+
+public class DescontoVIP : IEstrategiaDesconto {
+    public string TipoCliente => "VIP";
+    public decimal CalcularDesconto(decimal valor) => valor * 0.1m;
+}
+
+public class DescontoPremium : IEstrategiaDesconto {
+    public string TipoCliente => "Premium";
+    public decimal CalcularDesconto(decimal valor) => valor * 0.15m;
+}
+
+public class CalculadoraDesconto {
+    private readonly Dictionary<string, IEstrategiaDesconto> _estrategias;
+
+    public CalculadoraDesconto(IEnumerable<IEstrategiaDesconto> estrategias) {
+        _estrategias = estrategias.ToDictionary(e => e.TipoCliente);
+    }
+
+    public decimal CalcularDesconto(string tipoCliente, decimal valor) {
+        if (_estrategias.TryGetValue(tipoCliente, out var estrategia)) {
+            return estrategia.CalcularDesconto(valor);
+        }
+        return 0;
+    }
+}
+
+// Adicionando novo tipo sem modificar código existente
+public class DescontoPlatinum : IEstrategiaDesconto {
+    public string TipoCliente => "Platinum";
+    public decimal CalcularDesconto(decimal valor) => valor * 0.25m;
+}
+```
+
+**🎯 Benefícios da Refatoração**
+- **Extensibilidade**: Novos descontos adicionados facilmente
+- **Manutenibilidade**: Lógica centralizada por estratégia
+- **Flexibilidade**: Estratégias podem ser trocadas em runtime
+
+### Refatoração 3: De Dependências Concretas para DIP
+
+**❌ Código Original (Problema)**
+
+```csharp
+// Viola DIP - dependência de implementação concreta
+public class ServicoPedido {
+    private readonly RepositorioSQL _repositorio; // Dependência concreta
+
+    public ServicoPedido() {
+        _repositorio = new RepositorioSQL(); // Criação hardcoded
+    }
+
+    public Pedido BuscarPedido(string id) {
+        return _repositorio.BuscarPorId(id);
+    }
+}
+```
+
+**✅ Código Refatorado (Solução)**
+
+```csharp
+// Aplicando DIP - dependência de abstração
+public interface IRepositorioPedido {
+    Pedido BuscarPorId(string id);
+    void Salvar(Pedido pedido);
+}
+
+public class ServicoPedido {
+    private readonly IRepositorioPedido _repositorio; // Abstração
+
+    // Injeção de dependência
+    public ServicoPedido(IRepositorioPedido repositorio) {
+        _repositorio = repositorio;
+    }
+
+    public Pedido BuscarPedido(string id) {
+        return _repositorio.BuscarPorId(id);
+    }
+}
+
+// Implementações intercambiáveis
+public class RepositorioSQL : IRepositorioPedido {
+    public Pedido BuscarPorId(string id) { /* implementação SQL */ }
+    public void Salvar(Pedido pedido) { /* implementação SQL */ }
+}
+
+public class RepositorioMongo : IRepositorioPedido {
+    public Pedido BuscarPorId(string id) { /* implementação MongoDB */ }
+    public void Salvar(Pedido pedido) { /* implementação MongoDB */ }
+}
+```
+
+**🎯 Benefícios da Refatoração**
+- **Testabilidade**: Fácil usar mocks para testes
+- **Flexibilidade**: Troca de banco sem modificar serviço
+- **Desacoplamento**: Serviço não conhece detalhes de implementação
 
 ## 🎓 Conclusão
 
