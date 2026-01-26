@@ -23,12 +23,14 @@ Ao final desta trilha, você será capaz de:
 
 ## 📚 Módulos
 
-1. **[00 - Introdução ao SQL](./00-introducao-sql.md)** - Conceitos fundamentais
-2. **[01 - Consultas Básicas](./01-consultas-basicas.md)** - SELECT, INSERT, UPDATE, DELETE
-3. **[02 - Relacionamentos](./02-relacionamentos.md)** - JOINs e chaves estrangeiras
-4. **[03 - Entity Framework Core](./03-entity-framework.md)** - ORM e mapeamento
-5. **[04 - Migrations e Versionamento](./04-migrations.md)** - Controle de mudanças
-6. **[05 - Otimização e Performance](./05-otimizacao.md)** - Queries eficientes
+1. **[00 - Introdução ao SQL](./00-introducao-sql.md)** ✅ - Conceitos fundamentais
+2. **[01 - Consultas Básicas](./01-consultas-basicas.md)** ✅ - SELECT, INSERT, UPDATE, DELETE
+3. **[02 - Relacionamentos](./02-relacionamentos.md)** ✅ - JOINs e chaves estrangeiras
+4. **[03 - Entity Framework Core](./03-entity-framework.md)** ✅ - ORM e mapeamento
+5. **[04 - Migrations e Versionamento](./04-migrations.md)** ✅ - Controle de mudanças
+6. **[05 - Otimização e Performance](./05-otimizacao.md)** ✅ - Queries eficientes
+
+**Status: ✅ Trilha Completa (6/6 módulos)**
 
 ## 🎓 Progressão Sugerida
 

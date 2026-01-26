@@ -58,10 +58,26 @@ Todas as trilhas usam **C#** como linguagem de exemplo, seguindo as melhores pr�
 - ✅ Exercícios práticos
 - ✅ **Microsserviço de exemplo** (Logística)
 
+#### **[DDD](./trilhas/ddd/README.md)** - Domain-Driven Design
+- ✅ Introdução ao DDD
+- ✅ Linguagem Ubíqua
+- ✅ Entidades e Value Objects
+- ✅ Aggregates e Repositories
+- ✅ Domain Services
+- ✅ Bounded Contexts
+- ✅ CQRS e Eventos
+- ✅ Aplicação Prática
+
+#### **[SQL Server](./trilhas/sql-server/README.md)** - Banco de Dados Relacional
+- ✅ Introdução ao SQL
+- ✅ Consultas Básicas (SELECT, INSERT, UPDATE, DELETE)
+- ✅ Relacionamentos (JOINs, Foreign Keys)
+- ✅ Entity Framework Core
+- ✅ Migrations e Versionamento
+- ✅ Otimização e Performance
+
 ### 🔵 Estruturadas (Aguardando Conteúdo)
 
-- **[DDD](./trilhas/ddd/README.md)** - Domain-Driven Design
-- **[SQL Server](./trilhas/sql-server/README.md)** - Banco de Dados
 - **[Projeto Final](./trilhas/projeto-final/README.md)** - Integração de Conceitos
 
 ## 🚀 Projetos de Exemplo
@@ -128,8 +144,8 @@ Para desenvolvedores iniciando na jornada, recomendamos seguir esta ordem:
 3. **Clean Code** ✅ - Fundamentos de código limpo
 4. **SOLID** ✅ - Princípios de design
 5. **Testes Unitários** ✅ - TDD e testes automatizados
-6. **DDD** 🔵 - Design orientado a domínio
-7. **SQL Server** 🔵 - Persistência de dados
+6. **DDD** ✅ - Design orientado a domínio
+7. **SQL Server** ✅ - Persistência de dados
 8. **Projeto Final** 🔵 - Integração de todos os conceitos
 
 ## 📚 Recursos Compartilhados

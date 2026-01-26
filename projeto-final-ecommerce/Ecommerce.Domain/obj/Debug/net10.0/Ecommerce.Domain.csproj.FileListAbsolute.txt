@@ -1,0 +1,12 @@
+C:\Workspace\Estudo do Silvani\projeto-final-ecommerce\Ecommerce.Domain\bin\Debug\net10.0\Ecommerce.Domain.deps.json
+C:\Workspace\Estudo do Silvani\projeto-final-ecommerce\Ecommerce.Domain\bin\Debug\net10.0\Ecommerce.Domain.dll
+C:\Workspace\Estudo do Silvani\projeto-final-ecommerce\Ecommerce.Domain\bin\Debug\net10.0\Ecommerce.Domain.pdb
+C:\Workspace\Estudo do Silvani\projeto-final-ecommerce\Ecommerce.Domain\obj\Debug\net10.0\Ecommerce.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Workspace\Estudo do Silvani\projeto-final-ecommerce\Ecommerce.Domain\obj\Debug\net10.0\Ecommerce.Domain.AssemblyInfoInputs.cache
+C:\Workspace\Estudo do Silvani\projeto-final-ecommerce\Ecommerce.Domain\obj\Debug\net10.0\Ecommerce.Domain.AssemblyInfo.cs
+C:\Workspace\Estudo do Silvani\projeto-final-ecommerce\Ecommerce.Domain\obj\Debug\net10.0\Ecommerce.Domain.csproj.CoreCompileInputs.cache
+C:\Workspace\Estudo do Silvani\projeto-final-ecommerce\Ecommerce.Domain\obj\Debug\net10.0\Ecommerce.Domain.sourcelink.json
+C:\Workspace\Estudo do Silvani\projeto-final-ecommerce\Ecommerce.Domain\obj\Debug\net10.0\Ecommerce.Domain.dll
+C:\Workspace\Estudo do Silvani\projeto-final-ecommerce\Ecommerce.Domain\obj\Debug\net10.0\refint\Ecommerce.Domain.dll
+C:\Workspace\Estudo do Silvani\projeto-final-ecommerce\Ecommerce.Domain\obj\Debug\net10.0\Ecommerce.Domain.pdb
+C:\Workspace\Estudo do Silvani\projeto-final-ecommerce\Ecommerce.Domain\obj\Debug\net10.0\ref\Ecommerce.Domain.dll
