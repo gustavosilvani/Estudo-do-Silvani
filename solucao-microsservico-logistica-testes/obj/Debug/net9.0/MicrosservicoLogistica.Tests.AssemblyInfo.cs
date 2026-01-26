@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MicrosservicoLogistica.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3cd00887fcea40d639e9923eed2f76741b7d6297")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+43fcb749fb00856020af6aad9ca5a31ce38d81f1")]
 [assembly: System.Reflection.AssemblyProductAttribute("MicrosservicoLogistica.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MicrosservicoLogistica.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -24,14 +24,14 @@ Ao final desta trilha, você será capaz de:
 ## 📚 Módulos
 
 ### 📘 Fundamentos
-1. **[00 - Introdução aos Testes](./00-introducao-testes.md)** - Por que testar?
-2. **[01 - xUnit e Primeiros Testes](./01-xunit-primeiros-testes.md)** - Framework básico
-3. **[02 - Mocks e Stubs](./02-mocks-stubs.md)** - Isolamento de dependências
+1. **[00 - Introdução aos Testes](./00-introducao-testes.md)** ✅ - Por que testar?
+2. **[01 - xUnit e Primeiros Testes](./01-xunit-primeiros-testes.md)** ✅ - Framework básico
+3. **[02 - Mocks e Stubs](./02-mocks-stubs.md)** ✅ - Isolamento de dependências
 
 ### 📗 Técnicas Avançadas
-4. **[03 - TDD - Test-Driven Development](./03-tdd.md)** - Desenvolvimento orientado por testes
-5. **[04 - Testes de Integração](./04-testes-integracao.md)** - Testando componentes
-6. **[05 - Cobertura e Métricas](./05-cobertura-metricas.md)** - Qualidade dos testes
+4. **[03 - TDD - Test-Driven Development](./03-tdd.md)** ✅ - Desenvolvimento orientado por testes
+5. **[04 - Testes de Integração](./04-testes-integracao.md)** ✅ - Testando componentes
+6. **[05 - Cobertura e Métricas](./05-cobertura-metricas.md)** ✅ - Qualidade dos testes
 
 ## 🎓 Progressão Sugerida
 
@@ -39,12 +39,14 @@ Ao final desta trilha, você será capaz de:
 
 ## ✅ Checklist de Progresso
 
-- [ ] Módulo 00 - Introdução aos Testes
-- [ ] Módulo 01 - xUnit e Primeiros Testes
-- [ ] Módulo 02 - Mocks e Stubs
-- [ ] Módulo 03 - TDD
-- [ ] Módulo 04 - Testes de Integração
-- [ ] Módulo 05 - Cobertura e Métricas
+- [x] Módulo 00 - Introdução aos Testes
+- [x] Módulo 01 - xUnit e Primeiros Testes
+- [x] Módulo 02 - Mocks e Stubs
+- [x] Módulo 03 - TDD
+- [x] Módulo 04 - Testes de Integração
+- [x] Módulo 05 - Cobertura e Métricas
+
+**Status: ✅ Trilha Completa (6/6 módulos)**
 
 ## 🎯 Por que Testes Unitários?
 
