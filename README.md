@@ -76,9 +76,9 @@ Todas as trilhas usam **C#** como linguagem de exemplo, seguindo as melhores pr�
 - ✅ Migrations e Versionamento
 - ✅ Otimização e Performance
 
-### 🔵 Estruturadas (Aguardando Conteúdo)
+### ✅ Projetos Completos
 
-- **[Projeto Final](./trilhas/projeto-final/README.md)** - Integração de Conceitos
+- **[Projeto Final - E-commerce](./projeto-final-ecommerce/README.md)** ✅ - Sistema completo integrando todos os conceitos
 
 ## 🚀 Projetos de Exemplo
 
@@ -99,6 +99,16 @@ Localização: `microsservico-tarefas/`
 - Clean Architecture
 - API RESTful com links dinâmicos
 - Testes unitários completos
+
+### **Projeto Final - E-commerce** (Integração Completa)
+Localização: `projeto-final-ecommerce/`
+- ✅ **Sistema completo de E-commerce**
+- ✅ Aplicação de **TODOS** os conceitos aprendidos
+- ✅ SOLID, DDD, Clean Code, Testes Unitários
+- ✅ SQL Server + Entity Framework Core
+- ✅ Unit of Work + Result Pattern
+- ✅ API RESTful completa com Swagger
+- ✅ Arquitetura em camadas (Domain, Application, Infrastructure, API)
 
 ## 🚀 Como Usar
 
@@ -146,7 +156,7 @@ Para desenvolvedores iniciando na jornada, recomendamos seguir esta ordem:
 5. **Testes Unitários** ✅ - TDD e testes automatizados
 6. **DDD** ✅ - Design orientado a domínio
 7. **SQL Server** ✅ - Persistência de dados
-8. **Projeto Final** 🔵 - Integração de todos os conceitos
+8. **Projeto Final** ✅ - Integração de todos os conceitos (`projeto-final-ecommerce/`)
 
 ## 📚 Recursos Compartilhados
 
