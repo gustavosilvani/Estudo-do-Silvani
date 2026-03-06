@@ -46,6 +46,14 @@ Todas as trilhas usam **C#** como linguagem de exemplo, seguindo as melhores pr�
 - ✅ Testes de integração
 - ✅ Cobertura e métricas
 
+#### **[Design Patterns](./trilhas/design-patterns/README.md)** - Padrões de Projeto (GoF)
+- ✅ Introdução aos Design Patterns
+- ✅ Padrões criacionais (Singleton, Factory, Builder)
+- ✅ Padrões estruturais (Adapter, Decorator, Facade)
+- ✅ Padrões comportamentais (Strategy, Observer, Command)
+- ✅ Repository e Unit of Work
+- ✅ Aplicação prática nos projetos
+
 #### **[SOLID](./trilhas/solid/README.md)** - Princípios de Design OO
 - ✅ Introdução aos princípios SOLID
 - ✅ Single Responsibility Principle (SRP)
@@ -153,10 +161,11 @@ Para desenvolvedores iniciando na jornada, recomendamos seguir esta ordem:
 2. **C#/.NET** ✅ - Linguagem e framework
 3. **Clean Code** ✅ - Fundamentos de código limpo
 4. **SOLID** ✅ - Princípios de design
-5. **Testes Unitários** ✅ - TDD e testes automatizados
-6. **DDD** ✅ - Design orientado a domínio
-7. **SQL Server** ✅ - Persistência de dados
-8. **Projeto Final** ✅ - Integração de todos os conceitos (`projeto-final-ecommerce/`)
+5. **Design Patterns** ✅ - Padrões de projeto (GoF e persistência)
+6. **Testes Unitários** ✅ - TDD e testes automatizados
+7. **DDD** ✅ - Design orientado a domínio
+8. **SQL Server** ✅ - Persistência de dados
+9. **Projeto Final** ✅ - Integração de todos os conceitos (`projeto-final-ecommerce/`)
 
 ## 📚 Recursos Compartilhados
 

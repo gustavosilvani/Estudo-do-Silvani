@@ -64,6 +64,23 @@
 
 ---
 
+### 🟡 Design Patterns - Padrões de Projeto
+
+**Status**: ✅ Concluída
+**Progresso**: 6/6 módulos
+**Descrição**: Padrões de projeto GoF (criacionais, estruturais, comportamentais) e padrões de persistência (Repository, Unit of Work).
+
+#### Módulos
+
+- [00 - Introdução](./trilhas/design-patterns/00-introducao.md)
+- [01 - Padrões Criacionais](./trilhas/design-patterns/01-padroes-criacionais.md)
+- [02 - Padrões Estruturais](./trilhas/design-patterns/02-padroes-estruturais.md)
+- [03 - Padrões Comportamentais](./trilhas/design-patterns/03-padroes-comportamentais.md)
+- [04 - Repository e Unit of Work](./trilhas/design-patterns/04-repository-unit-of-work.md)
+- [05 - Aplicação Prática](./trilhas/design-patterns/05-aplicacao-pratica.md)
+
+---
+
 ### 🟢 Clean Code - Princípios de Código Limpo
 
 **Status**: Em desenvolvimento
@@ -157,6 +174,8 @@ Testes Unitários (Qualidade)
     ↓
 SOLID (Design)
     ↓
+Design Patterns (Padrões de Projeto)
+    ↓
 DDD (Domínio)
     ↓
 SQL Server (Dados)
@@ -183,6 +202,7 @@ Esta trilha foi especialmente projetada para **desenvolvedores aprendizes** com:
 | Clean Code | ✅ Concluída | 6 | 100% |
 | Testes Unitários | ✅ Concluída | 7 | 100% |
 | SOLID | ✅ Concluída | 8 | 100% |
+| Design Patterns | ✅ Concluída | 6 | 100% |
 | DDD | ✅ Concluída | 8 | 100% |
 | SQL Server | ✅ Concluída | 6 | 100% |
 | Projeto Final | ✅ Concluída | 1 | 100% |
